@@ -41,7 +41,7 @@ const SearchBar: React.FC<{}> = () => {
 	};
 	const logout = () => {
 		window.sessionStorage.removeItem("loggedIn");
-		window.location.assign("/");
+		window.location.assign("/investment-profiles");
 		window.location.reload();
 	};
 	return (

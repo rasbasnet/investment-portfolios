@@ -36,7 +36,7 @@ const LoginPage: React.FC<{}> = () => {
 		) {
 			setError(false);
 			window.sessionStorage.setItem("loggedIn", "true");
-			window.location.assign("/");
+			window.location.assign("/investment-profiles");
 			window.location.reload();
 		} else {
 			setError(true);

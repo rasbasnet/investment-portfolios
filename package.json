@@ -1,7 +1,7 @@
 {
 	"name": "investment-portfolios",
 	"version": "0.1.0",
-	"homepage": "https://rasbasnet.github.io/investment-portfolios/",
+	"homepage": "https://rasbasnet.github.io/investment-portfolios",
 	"private": true,
 	"dependencies": {
 		"@apollo/client": "^3.7.10",
