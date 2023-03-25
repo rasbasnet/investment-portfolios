@@ -16,7 +16,7 @@ const PublicRoute = ({ component: Component, authenticated }: any) =>
 	authenticated === false ? (
 		Component
 	) : (
-		<Navigate to="/investment-portfolios" replace={true} />
+		<Navigate to="/investment-portfolios/" replace={true} />
 	);
 const App = () => {
 	const { authenticated } = useContext(AuthContext);
