@@ -9,11 +9,15 @@ const PrivateRoute = ({ component: Component, authenticated }: any) =>
 	authenticated === true ? (
 		Component
 	) : (
-		<Navigate to="/login" replace={true} />
+		<Navigate to="/investment-profiles/login" replace={true} />
 	);
 
 const PublicRoute = ({ component: Component, authenticated }: any) =>
-	authenticated === false ? Component : <Navigate to="/" replace={true} />;
+	authenticated === false ? (
+		Component
+	) : (
+		<Navigate to="/investment-profiles" replace={true} />
+	);
 const App = () => {
 	const { authenticated } = useContext(AuthContext);
 
@@ -21,31 +25,37 @@ const App = () => {
 		<BrowserRouter>
 			<Routes>
 				<Route
-					path="*"
+					path="/investment-profiles*"
 					element={
 						authenticated ? (
-							<Navigate to="/customers" replace={true} />
+							<Navigate
+								to="/investment-profiles/customers"
+								replace={true}
+							/>
 						) : (
-							<Navigate to="/login" replace={true} />
+							<Navigate
+								to="/investment-profiles/login"
+								replace={true}
+							/>
 						)
 					}
 				></Route>
 				<Route
-					path="/customers"
+					path="/investment-profiles/customers"
 					element={
 						<PrivateRoute
 							authenticated={authenticated}
-							path="/customers"
+							path="/investment-profiles/customers"
 							component={<BasePage />}
 						/>
 					}
 				></Route>
 				<Route
-					path="/login"
+					path="/investment-profiles/login"
 					element={
 						<PublicRoute
 							authenticated={authenticated}
-							path="/login"
+							path="/investment-profiles/login"
 							component={<LoginPage />}
 						/>
 					}
