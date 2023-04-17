@@ -8,19 +8,24 @@ import {
 	useMediaQuery,
 } from "@mui/material";
 import { useState } from "react";
-import mockData from "../../mockData/MockData";
 import "./SearchBarStyles.css";
 import { ModalClose, ModalDialog, Modal } from "@mui/joy";
-import { MockData } from "../../mockData/MockDataInterface";
+import {
+	AssetAllocation,
+	CustomerData,
+} from "../../JsonInterfaces/CustomerDataInterface";
 import LogoutIcon from "@mui/icons-material/Logout";
 
-const SearchBar: React.FC<{}> = () => {
+export interface SearchBarProps {
+	customerData: CustomerData[];
+}
+const SearchBar: React.FC<SearchBarProps> = ({ customerData }) => {
 	const [showModal, setShowModal] = useState(true);
-	const [currentCustomer, setCurrentCustomer] = useState<MockData | null>(
+	const [currentCustomer, setCurrentCustomer] = useState<CustomerData | null>(
 		null
 	);
 
-	const customerListNames = mockData.map((data) => data.customerName);
+	const customerListNames = customerData.map((data) => data.customerName);
 	const matches = useMediaQuery("(min-width:700px)");
 	const preventSubmit = (event: any) => {
 		event.preventDefault();
@@ -31,7 +36,9 @@ const SearchBar: React.FC<{}> = () => {
 		const innerText = inputElement.innerText;
 		innerText &&
 			setCurrentCustomer(
-				mockData.filter((data) => data.customerName === innerText)[0]
+				customerData.filter(
+					(data) => data.customerName === innerText
+				)[0]
 			);
 		setShowModal(!!innerText);
 	};
@@ -70,14 +77,16 @@ const SearchBar: React.FC<{}> = () => {
 							<Typography variant="h1">
 								{currentCustomer.customerName}
 							</Typography>
-							{currentCustomer.portfolio.map((portfolio) => (
-								<>
-									<Typography variant="h5">{`Asset: ${portfolio.assetName}`}</Typography>
-									<Typography variant="body1">{`Allocation: ${portfolio.allocation}`}</Typography>
-									<Typography variant="body1">{`Risk Score: ${portfolio.riskScore}`}</Typography>
-									<br />
-								</>
-							))}
+							{currentCustomer.portfolio.map(
+								(portfolio: AssetAllocation) => (
+									<>
+										<Typography variant="h5">{`Asset: ${portfolio.assetName}`}</Typography>
+										<Typography variant="body1">{`Allocation: ${portfolio.allocation}`}</Typography>
+										<Typography variant="body1">{`Risk Score: ${portfolio.riskScore}`}</Typography>
+										<br />
+									</>
+								)
+							)}
 						</ModalDialog>
 					</Modal>
 				)}

@@ -1,11 +1,14 @@
 import { Grid, Typography } from "@mui/material";
-import mockData from "../../mockData/MockData";
 import "./CustomerListStyles.css";
+import { CustomerData } from "../../JsonInterfaces/CustomerDataInterface";
 
-const CustomerList: React.FC<{}> = () => {
+export interface CustomerListProps {
+	customerData: CustomerData[];
+}
+const CustomerList: React.FC<CustomerListProps> = ({ customerData }) => {
 	return (
 		<Grid item container spacing={2}>
-			{mockData.map((data) => (
+			{customerData.map((data) => (
 				<Grid
 					item
 					xs={12}

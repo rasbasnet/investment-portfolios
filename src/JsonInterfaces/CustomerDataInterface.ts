@@ -1,4 +1,4 @@
-export interface MockData {
+export interface CustomerData {
 	customerName: string;
 	portfolio: AssetAllocation[];
 }
