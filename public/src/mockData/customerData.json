@@ -1,0 +1,82 @@
+[
+	{
+		"customerName": "John Smith",
+		"portfolio": [
+			{
+				"assetName": "Stocks",
+				"allocation": 0.6,
+				"riskScore": 8
+			},
+			{
+				"assetName": "Bonds",
+				"allocation": 0.3,
+				"riskScore": 3
+			},
+			{
+				"assetName": "Cash",
+				"allocation": 0.1,
+				"riskScore": 1
+			}
+		]
+	},
+	{
+		"customerName": "Jane Doe",
+		"portfolio": [
+			{
+				"assetName": "Stocks",
+				"allocation": 0.8,
+				"riskScore": 9
+			},
+			{
+				"assetName": "Bonds",
+				"allocation": 0.2,
+				"riskScore": 3
+			}
+		]
+	},
+	{
+		"customerName": "Bob Johnson",
+		"portfolio": [
+			{
+				"assetName": "Stocks",
+				"allocation": 0.4,
+				"riskScore": 7
+			},
+			{
+				"assetName": "Bonds",
+				"allocation": 0.3,
+				"riskScore": 3
+			},
+			{
+				"assetName": "Real Estate",
+				"allocation": 0.2,
+				"riskScore": 6
+			},
+			{
+				"assetName": "Commodities",
+				"allocation": 0.1,
+				"riskScore": 8
+			}
+		]
+	},
+	{
+		"customerName": "Alice Smith",
+		"portfolio": [
+			{
+				"assetName": "Stocks",
+				"allocation": 0.5,
+				"riskScore": 9
+			},
+			{
+				"assetName": "Bonds",
+				"allocation": 0.3,
+				"riskScore": 4
+			},
+			{
+				"assetName": "Cash",
+				"allocation": 0.2,
+				"riskScore": 1
+			}
+		]
+	}
+]

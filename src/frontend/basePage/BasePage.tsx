@@ -2,11 +2,22 @@ import { Button, Grid, Typography } from "@mui/material";
 import "./BasePageStyles.css";
 import SearchBar from "../SearchBar/SearchBar";
 import CustomerList from "../customerList/CustomerList";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { fetchCustomerData } from "../../Utils/fetchJsonUtils";
 
 const BasePage: React.FC<{}> = () => {
 	const [showCustomersList, setShowCustomersList] = useState(false);
-	return (
+	const [customerData, setCustomerData] = useState(null);
+
+	useEffect(() => {
+		async function getCustomerData() {
+			const data = await fetchCustomerData();
+			setCustomerData(data);
+		}
+		getCustomerData();
+	}, []);
+
+	return customerData ? (
 		<Grid
 			container
 			spacing={3}
@@ -15,7 +26,7 @@ const BasePage: React.FC<{}> = () => {
 			className="basePage-container"
 		>
 			<Grid item container justifyContent="center" alignItems="center">
-				<SearchBar />
+				<SearchBar customerData={customerData} />
 			</Grid>
 			<Button
 				onClick={() => setShowCustomersList(!showCustomersList)}
@@ -34,10 +45,12 @@ const BasePage: React.FC<{}> = () => {
 					<Grid item>
 						<Typography variant="h5">All Customers List</Typography>
 					</Grid>
-					<CustomerList />
+					<CustomerList customerData={customerData} />
 				</Grid>
 			)}
 		</Grid>
+	) : (
+		<div></div>
 	);
 };
 

@@ -13,7 +13,8 @@ import "./LoginPage.css";
 import { VisibilityOff, Visibility } from "@mui/icons-material";
 import { useState } from "react";
 import LoginIcon from "@mui/icons-material/Login";
-import loginInfo from "../../mockData/loginInfo";
+import { fetchLoginInfo } from "../../Utils/fetchJsonUtils";
+import { LoginData } from "../../JsonInterfaces/LoginDataInterface";
 
 const LoginPage: React.FC<{}> = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -27,10 +28,11 @@ const LoginPage: React.FC<{}> = () => {
 	) => {
 		event.preventDefault();
 	};
-	const login = () => {
+	const login = async () => {
+		const loginData = await fetchLoginInfo();
 		if (
-			loginInfo.some(
-				(user) =>
+			loginData.some(
+				(user: LoginData) =>
 					user.userName === userName && user.password === password
 			)
 		) {
